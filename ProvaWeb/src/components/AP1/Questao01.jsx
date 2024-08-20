@@ -6,13 +6,16 @@ function Questao01B({ lista, msg }) {
     // Estado para armazenar o maior valor de cada objeto
     const [maiores, setMaiores] = useState([]);
 
+    // UseEffect para atualizar o estado dos maiores valores sempre que a lista mudar
     useEffect(() => {
         const encontrarMaior = (obj) => {
+            ///... faz uma cópia do objeto e "desconstrói" ele em um array de valores
             return Math.max(...Object.values(obj));
         };
 
         // Encontra o maior valor de cada objeto
         const listaComMaiores = lista.map((obj) => {
+            // Adiciona o maior valor ao objeto
             const maior = encontrarMaior(obj);
             return { ...obj, maior };
         });
