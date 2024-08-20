@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 // Desconstrução dos argumentos recebidos do pai
-const Questao01B = ({ lista, msg }) => {
+function Questao01B({ lista, msg }) {
 
     // Estado para armazenar o maior valor de cada objeto
     const [maiores, setMaiores] = useState([]);
@@ -39,7 +39,7 @@ const Questao01A = () => {
 
     const lista = [
         { a: 10, b: 3, c: 7 },
-        { a: 5, b: -33, c: 9 },
+        { a: 5, b: -3, c: 9 },
         { a: 1, b: 29, c: 40 },
     ];
 
