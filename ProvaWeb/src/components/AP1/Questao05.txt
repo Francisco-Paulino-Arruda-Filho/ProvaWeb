@@ -3,5 +3,8 @@ Questão 04 - Crie um arquivo Questao04.txt e:
     um exemplo em (pode codificar ou simplesmente desenhar e explicar. Não precisa
     executar):
         O uso de contextos evita que haja sempre a necessidade de passar uma props manualmente de componentes pais para filhos, netos
-        e etc. Evitando assim, que além de evitar que o código que menos verboso, redundante e confuso á medida que hierarquia de 
-        componentes vai aumentando, pois dessa forma quem tem interessse nessa informação vai poder acessar de maneira mais direta.
+        e etc. Evitando assim, que o código fique mais verboso, redundante e confuso à medida que a hierarquia de 
+        componentes vai aumentando, pois dessa forma quem tem interessse nessa informação vai poder acessar de maneira mais direta
+        sem precisar da props do seu componente paterno, logo também evitando que componentes pais também acabem passando
+        como props alguma informação que o descendente não precisa já que como a lógica estará encapsulada em outro arquivo o 
+        componente só irá acessar se for do seu interessse.
