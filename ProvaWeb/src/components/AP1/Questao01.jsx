@@ -43,7 +43,7 @@ const Questao01A = () => {
     const lista = [
         { a: 10, b: 3, c: 7 },
         { a: 5, b: -3, c: 9 },
-        { a: 1, b: 29, c: 40 },
+        { a: 1, b: 9, c: 40 },
     ];
 
     const mensagemFilho = (msg) => {
