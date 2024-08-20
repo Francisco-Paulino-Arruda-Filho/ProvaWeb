@@ -39,6 +39,7 @@ const Questao03 = () => {
                     setData(data);
                     setLoading(false);
 
+                    // Variáveis temporárias para armazenar a maior e a menor população
                     let maiorPopTemp = 0;
                     let menorPopTemp = Number.MAX_SAFE_INTEGER;
                     let capitalMaior = '';
@@ -46,9 +47,11 @@ const Questao03 = () => {
 
                     // Encontra a capital com a maior e a menor população
                     data.forEach((country) => {
+                        // Desconstrução dos dados do país
                         const population = country.population;
                         const capital = country.capital ? country.capital[0] : 'Desconhecida';
 
+                        // Encontra a capital com a maior e a menor população
                         if (population > maiorPopTemp) {
                             maiorPopTemp = population;
                             capitalMaior = capital;
@@ -81,6 +84,7 @@ const Questao03 = () => {
         return <div>Carregando...</div>;
     }
 
+    // Renderiza o erro em caso de falha na requisição
     if (error) {
         return <div>Erro: {error}</div>;
     }
