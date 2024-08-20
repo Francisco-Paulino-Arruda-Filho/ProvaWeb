@@ -6,8 +6,8 @@ const Questao02 = () => {
 
     // Declare duas variáveis chamadas 'url' e 'url2' e inicialize-as com os valores fornecidos na questão, cada uma
     // com um sprite do Pikachu
-    const url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/25.png'
-    const url2 = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png'
+    const pikachuFrente = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/25.png'
+    const pikachuCostas = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png'
 
     return (
         <>
@@ -15,9 +15,9 @@ const Questao02 = () => {
             <button onClick={() => setVirar(!virar)}>Virar</button>
             {/* Ternário que renderize uma imagem com o atributo 'src' que alterna entre 'url' e 'url2' dependendo do valor de 'virar' */}
             {virar ? (
-                <img src={url} alt="Pokemon" />
+                <img src={pikachuFrente} alt="Pokemon" />
             ) : (
-                <img  src={url2} alt="Pokemon" />
+                <img  src={pikachuCostas} alt="Pokemon" />
             )}
         </>
     );
