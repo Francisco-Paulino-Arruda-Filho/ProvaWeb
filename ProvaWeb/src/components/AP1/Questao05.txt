@@ -1,0 +1,7 @@
+Questão 04 - Crie um arquivo Questao04.txt e:
+    Explique como o uso de Contextos pode resolver o problema de PROPS DRILLING. Use
+    um exemplo em (pode codificar ou simplesmente desenhar e explicar. Não precisa
+    executar):
+        O uso de contextos evita que haja sempre a necessidade de passar uma props manualmente de componentes pais para filhos, netos
+        e etc. Evitando assim, que além de evitar que o código que menos verboso, redundante e confuso á medida que hierarquia de 
+        componentes vai aumentando, pois dessa forma quem tem interessse nessa informação vai poder acessar de maneira mais direta.
