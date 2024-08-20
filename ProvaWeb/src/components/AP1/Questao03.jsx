@@ -16,63 +16,52 @@ const Questao03 = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchData = () => {
-            const minhaPromessa = new Promise((resolve, reject) => {
-                fetch('https://restcountries.com/v3.1/region/europe?fields=capital,population')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Erro na requisição');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        resolve(data); // Resolve a promessa com os dados da API
-                    })
-                    .catch(error => {
-                        reject(error); // Rejeita a promessa em caso de erro
-                    });
-            });
+        const fetchData = async () => {
+            try {
+                const response = await fetch('https://restcountries.com/v3.1/region/europe?fields=capital,population');
+                
+                if (!response.ok) {
+                    throw new Error('Erro na requisição');
+                }
 
-            // Utilização da Promise com async-await
-            minhaPromessa
-                .then(data => {
-                    setData(data);
-                    setLoading(false);
+                const data = await response.json();
+                setData(data);
+                setLoading(false);
 
-                    // Variáveis temporárias para armazenar a maior e a menor população
-                    let maiorPopTemp = 0;
-                    let menorPopTemp = Number.MAX_SAFE_INTEGER;
-                    let capitalMaior = '';
-                    let capitalMenor = '';
+                // Variáveis temporárias para armazenar a maior e a menor população
+                let maiorPopTemp = 0;
+                let menorPopTemp = Number.MAX_SAFE_INTEGER;
+                let capitalMaior = '';
+                let capitalMenor = '';
+
+                // Encontra a capital com a maior e a menor população
+                data.forEach((country) => {
+                    // Desconstrução dos dados do país
+                    const population = country.population;
+                    const capital = country.capital ? country.capital[0] : 'Desconhecida';
 
                     // Encontra a capital com a maior e a menor população
-                    data.forEach((country) => {
-                        // Desconstrução dos dados do país
-                        const population = country.population;
-                        const capital = country.capital ? country.capital[0] : 'Desconhecida';
+                    if (population > maiorPopTemp) {
+                        maiorPopTemp = population;
+                        capitalMaior = capital;
+                    }
 
-                        // Encontra a capital com a maior e a menor população
-                        if (population > maiorPopTemp) {
-                            maiorPopTemp = population;
-                            capitalMaior = capital;
-                        }
-
-                        if (population < menorPopTemp) {
-                            menorPopTemp = population;
-                            capitalMenor = capital;
-                        }
-                    });
-
-                    //Seta os valores renderizados na tela
-                    setMaiorPopulacao(maiorPopTemp);
-                    setCapitalMaiorPopulacao(capitalMaior);
-                    setMenorPopulacao(menorPopTemp);
-                    setCapitalMenorPopulacao(capitalMenor);
-                })
-                .catch(error => {
-                    setError(error.message);
-                    setLoading(false);
+                    if (population < menorPopTemp) {
+                        menorPopTemp = population;
+                        capitalMenor = capital;
+                    }
                 });
+
+                //Seta os valores renderizados na tela
+                setMaiorPopulacao(maiorPopTemp);
+                setCapitalMaiorPopulacao(capitalMaior);
+                setMenorPopulacao(menorPopTemp);
+                setCapitalMenorPopulacao(capitalMenor);
+
+            } catch (error) {
+                setError(error.message);
+                setLoading(false);
+            }
         };
 
         fetchData();
